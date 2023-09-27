@@ -11,7 +11,7 @@ val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
 fun main(args: Array<String>) {
     //Instantiation des monstres
     val gobelin = Personnage(
-        "XXX le gobelin",
+        "Trundle le Roi des Gobelins",
         pointDeVie = 20,
         pointDeVieMax = 20,
         attaque = 5,

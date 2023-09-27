@@ -13,6 +13,8 @@ class Combat(
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
+        val action=readln()
+        
         this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
 
@@ -21,7 +23,7 @@ class Combat(
 
     // Méthode pour simuler un tour de combat du monstre
     fun tourDeMonstre() {
-        println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
+        println("\u001B[31m \u001B[1m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
         //TODO Mission 1.3
 
         // Générez un nombre aléatoire entre 1 et 100
