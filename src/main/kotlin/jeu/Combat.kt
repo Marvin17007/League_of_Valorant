@@ -16,7 +16,6 @@ class Combat(
         this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
 
-        println("c'st a vous ")
         
     }
 
@@ -24,8 +23,7 @@ class Combat(
     fun tourDeMonstre() {
         println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
         //TODO Mission 1.3
-        this.monstre.attaque(this.jeu.joueur)
-        println("\u001b[0m")
+
         // Générez un nombre aléatoire entre 1 et 100
         val randomDiceRoll = Random.nextInt(1, 101)
 
@@ -36,6 +34,7 @@ class Combat(
             // Le monstre passe son tour sinon
             println("${monstre.nom} passe son tour.")
         }
+        println("\u001b[0m")
     }
 
     // Méthode pour exécuter le combat complet
