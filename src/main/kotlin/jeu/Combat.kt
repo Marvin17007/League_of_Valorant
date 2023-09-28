@@ -11,15 +11,29 @@ class Combat(
 
     // Méthode pour simuler un tour de combat du joueur
     fun tourDeJoueur() {
-        println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
-       //TODO Mission 1.2
-        val action=readln()
-        
-        this.jeu.joueur.attaque(monstre)
-        println("\u001b[0m")
+        println("\u001B[34m --- C'est votre tour ${this.jeu.joueur.nom} ! (pv: ${this.jeu.joueur.pointDeVie}) ---")
 
-        
+        println("Vous devez choisir entre Attaquer (A) ou passer votre tour (P) : ")
+        val action = readLine()
+
+        when (action?.toUpperCase()) {
+            "A" -> {
+
+                this.jeu.joueur.attaque(monstre)
+            }
+            "P" -> {
+
+                println("Vous avez décidé de passer votre tour.")
+            }
+            else -> {
+
+                println("Commande non reconnue. Veuillez choisir entre Attaquer (A) ou passer votre tour (P).")
+            }
+        }
+
+        println("\u001b[0m")
     }
+
 
     // Méthode pour simuler un tour de combat du monstre
     fun tourDeMonstre() {
