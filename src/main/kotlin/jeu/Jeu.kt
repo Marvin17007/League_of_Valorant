@@ -1,7 +1,10 @@
 package jeu
 
+import item.TypeArme
+import item.TypeArmure
 import personnage.Personnage
-
+import epee
+import armureetoffe
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -83,19 +86,20 @@ class Jeu(monstres: List<Personnage>) {
                 if (totalPoints > 40) {
                     println(" \u001B[1m Vous avez dépassé le total de 40 points. Réessayez. \u001B[0m ")
                 } else {
-                    hero = Personnage(nom , pv, pv, attaque, defense, endurance, vitesse)
+                    hero = Personnage(nom , pv, pv, attaque, defense, endurance, vitesse, armePrincipal = epee , armure = armureetoffe )
                     this.joueur=hero
                     break
                 }
             } while (totalPoints > 40)
         } else {
-            hero = Personnage(nom ?: "YYY", 50, 50, 12, 8, 8, 12)
+            hero = Personnage(nom ?: "YYY", 50, 50, 12, 8, 8, 12, armePrincipal = epee, armure = armureetoffe)
             this.joueur=hero
         }
         println()
         println(this.joueur)
 
     }
-    
+
+
 
 }

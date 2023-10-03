@@ -1,6 +1,11 @@
 package personnage
 
- class Personnage(
+import item.TypeArme
+import item.TypeArmure
+import item.Arme
+import item.Armure
+
+class Personnage(
     val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
@@ -8,6 +13,8 @@ package personnage
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
+    var armePrincipal: Arme,
+    var armure: Armure
 ) {
 
      fun calculeDefense():Int{

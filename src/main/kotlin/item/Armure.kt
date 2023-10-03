@@ -1,14 +1,16 @@
 package item
-
 import personnage.Personnage
 
-class Armure (
-
+class Armure(
     val nom: String,
     val description: String,
-    val qualite: Qualite,
-    val typeArme: TypeArme,
-    )
-{
+    var typeArmure: TypeArmure,
+    var qualite: Qualite
+)
 
+{
+    fun calculProtection(): Int {
+        val additionProtection = this.typeArmure.bonus + this.qualite.bonusRarete
+        return additionProtection
+    }
 }
