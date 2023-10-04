@@ -8,12 +8,9 @@ import qualiteEpic
 import qualiteLegendaire
 
 
-class Arme(
-    val nom: String,
-    val description: String,
-    val typeArme: TypeArme,
-    var qualite: Qualite
-) {
+class Arme(nom: String, description: String, val typeArme: TypeArme, var qualite: Qualite):Item(nom,description)
+
+ {
 
     fun calculDegat(): Int {
         // Lancer un dé avec la valeur maximale du type d'arme

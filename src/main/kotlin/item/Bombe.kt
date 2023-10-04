@@ -4,9 +4,9 @@ import jeu.TirageDes
 import personnage.Personnage
 
 
-class BombeConstructor(var nom :String, var nombreDeDes : Int, var maxDe : Int, var description: String){
+class BombeConstructor( nom :String, var nombreDeDes : Int, var maxDe : Int, description: String):Item (nom, description){
 
-    fun utiliser(cible: Personnage) {
+    override fun utiliser(cible: Personnage) {
         val des = TirageDes(nombreDeDes, maxDe)
         val degats = des.lance()
 

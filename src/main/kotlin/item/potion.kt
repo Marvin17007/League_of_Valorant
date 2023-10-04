@@ -2,8 +2,6 @@ package item
 
 import jeu.TirageDes
 import personnage.Personnage
-class Potion(
-    val soin: Int,
-    val nom: String,
-    val description: String
-)
+class Potion(nom: String, description: String, val soin: Int):Item (nom, description)
+
+
