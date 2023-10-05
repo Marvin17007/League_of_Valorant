@@ -1,7 +1,10 @@
 package item
 
-import jeu.TirageDes
 import personnage.Personnage
-class Potion(nom: String, description: String, val soin: Int):Item (nom, description)
 
+class Potion(var soin: Int, nom: String, description: String):Item (nom, description)
+
+fun utiliser(cible: Personnage) {
+    cible.boirePotion()
+}
 

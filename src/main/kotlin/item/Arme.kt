@@ -2,6 +2,7 @@ package item
 
 import jdk.jfr.Description
 import jeu.TirageDes
+import personnage.Personnage
 import qualiteCommun
 import qualiteRare
 import qualiteEpic
@@ -34,5 +35,9 @@ class Arme(nom: String, description: String, val typeArme: TypeArme, var qualite
             return degatsAvecBonus
         }
     }
+
+     override fun utiliser(cible: Personnage) {
+         cible.equipeArme(this)
+     }
 
 }

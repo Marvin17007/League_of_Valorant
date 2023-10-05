@@ -1,5 +1,6 @@
 package jeu
 
+import item.Bombe
 import personnage.Personnage
 import kotlin.random.Random
 
@@ -13,26 +14,50 @@ class Combat(
     fun tourDeJoueur() {
         println("\u001B[34m --- C'est votre tour ${this.jeu.joueur.nom} ! (pv: ${this.jeu.joueur.pointDeVie}) ---")
 
-        println("Vous devez choisir entre Attaquer (A) ou passer votre tour (P) : ")
-        val action = readLine()
+        println("Vous devez choisir entre Attaquer (A), utiliser un objet (U) ou passer votre tour (P) : ")
+        val action = readLine()?.toUpperCase()
 
-        when (action?.toUpperCase()) {
+        when (action) {
             "A" -> {
-
                 this.jeu.joueur.attaque(monstre)
             }
             "P" -> {
-
                 println("Vous avez décidé de passer votre tour.")
             }
-            else -> {
+            "U" -> {
 
-                println("Commande non reconnue. Veuillez choisir entre Attaquer (A) ou passer votre tour (P).")
+                this.jeu.joueur.afficheInventaire()
+
+
+                println("Choisissez un objet en entrant son index (0 pour annuler) : ")
+                val indexObjet = readln()
+
+                if (indexObjet != null && indexObjet >= 0.toString() && indexObjet < this.jeu.joueur.inventaire!!.size.toString()) {
+
+                    this.jeu.joueur.afficheInventaire()
+                    println("Selectionnez un item")
+                    val selection:Int = readln().toInt()
+                    val objet= this.jeu.joueur.inventaire[selection]
+                    if (objet is Bombe){
+                        objet.utiliser(monstre)
+                    }
+                    else {
+
+                        println("Saisie invalide ou annulée.")
+                    }
+                    objet.utiliser(this.jeu.joueur)
+
+
+                }
+            }
+            else -> {
+                println("Commande non reconnue. Veuillez choisir entre Attaquer (A), utiliser un objet (U) ou passer votre tour (P).")
             }
         }
 
         println("\u001b[0m")
     }
+
 
 
     // Méthode pour simuler un tour de combat du monstre
@@ -40,18 +65,30 @@ class Combat(
         println("\u001B[31m \u001B[1m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
         //TODO Mission 1.3
 
-        // Générez un nombre aléatoire entre 1 et 100
         val randomDiceRoll = Random.nextInt(1, 101)
 
         if (randomDiceRoll <= 70) {
-            // Le monstre attaque si le dé est entre 1 et 70
+
             monstre.attaque(jeu.joueur)
         } else {
-            // Le monstre passe son tour sinon
+
             println("${monstre.nom} passe son tour.")
+
+
+            if (monstre.pointDeVie < monstre.pointDeVieMax / 2) {
+
+                val chancePotion = Random.nextInt(1, 11)
+
+
+                if (chancePotion == 1) {
+                    monstre.boirePotion()
+                    println("${monstre.nom} boit une potion.")
+                }
+            }
         }
         println("\u001b[0m")
     }
+
 
     // Méthode pour exécuter le combat complet
     fun executerCombat() {
