@@ -11,7 +11,7 @@ class BombeConstructorTest {
 
     @Test
     fun utiliser() {
-        val bombe = BombeConstructor ("Spike", 1, 5, "Dispositif explosif")
+        val bombe = Bombe ("Spike", 1, 5, "Dispositif explosif")
         val Troll = Personnage(
             "\u001B[32m \u001B[1m Trundle le Roi des Trolls \u001B[0m ",
             pointDeVie = 20,
@@ -21,7 +21,8 @@ class BombeConstructorTest {
             vitesse = 11,
             endurance = 6,
             armePrincipal = epee,
-            armure = armureetoffe
+            armure = armureetoffe,
+
         )
         bombe.utiliser(Troll)
         val result = 20 - Troll.pointDeVie

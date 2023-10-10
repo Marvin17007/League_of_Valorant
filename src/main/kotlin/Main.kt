@@ -8,10 +8,11 @@ val qualiteRare = Qualite("rare", 1, couleur = "\u001B[34m")
 val qualiteEpic = Qualite("epic", 2, "\u001B[35m")
 val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
 
-val typeEpeeLongue = TypeArme ( "Epee Longue", 1, 2, 5, 15)
+val typeCourtePorte = TypeArme ( "Epee Longue", 1, 2, 5, 15)
 val typePompe = TypeArme ("Shorty", 1, 4, 4, 16)
 val typeAR = TypeArme ("Vandal", 1, 7, 3, 17)
 val typeSnipe = TypeArme ("Operator", 1, 10, 2, 18)
+val typeOrbe = TypeArme ("Orbe", 1, 10, 2, 15)
 
 //Instantiation des Types Armes
 
@@ -20,14 +21,16 @@ val typeArmureRare= TypeArmure ("Armure rare", "+15",15)
 val typeArmureEpic = TypeArmure ("Armure épic", "+20",20)
 val typeArmureLegendaire = TypeArmure ("Armure légendaire", "+25",25)
 
-//Instantiation des aArmes
+//Instantiation des Armes
 
-val epee = Arme ("Epee Longue", "Epee Longue de premier niveau", typeEpeeLongue, qualiteCommun)
+val epee = Arme ("Epee Longue", "Epee Longue de premier niveau", typeCourtePorte, qualiteCommun)
 val pompe = Arme ("Shorty", "Shorty le petit pompe", typePompe, qualiteRare)
 val aR = Arme ("Vandal", "Arme principal à rafale ", typeAR, qualiteEpic)
 val sniper = Arme ("Operator", "Arme de longue distance", typeSnipe, qualiteLegendaire)
-val hacheDeGuerre = Arme( "Hache De Guerre", "Seuls les dieux héritent de cette hache !", typeEpeeLongue, qualiteLegendaire )
-
+val hacheDeGuerre = Arme( "Hache De Guerre", "Seuls les dieux héritent de cette hache !", typeCourtePorte, qualiteLegendaire)
+val piedDeBiche = Arme ("Pied De Biche", "Faites attention à vos poches", typeCourtePorte, qualiteRare)
+val orbedIllision = Arme( "Orbe d'Illusion", "Orbe d'Ahri", typeOrbe, qualiteRare )
+val lameDeDemacia = Arme( "Lame de Demacia", "DEMACIAAAA!!!",typeCourtePorte,qualiteLegendaire)
 
 //Instantiation des Bombes
 val bombe = Bombe ("Spike", 1, 5, "Dispositif explosif")
@@ -56,11 +59,7 @@ val Troll = Personnage(
     endurance = 6,
     armePrincipal = epee,
     armure = armureetoffe,
-    inventaire = null,
-    avoirPotion = false,
-    boirePotion = false,
-    avoirBombe= false,
-    utiliserObjet = false
+    inventaire = mutableListOf(),
 
 )
 
@@ -75,11 +74,8 @@ val Chogath = Personnage(
     endurance = 6,
     armePrincipal = pompe,
     armure = armureetoffe,
-    inventaire = null,
-    avoirPotion = false,
-    boirePotion = false,
-    avoirBombe= false,
-    utiliserObjet = false
+    inventaire = mutableListOf(),
+
 )
 
 val Darius = Personnage(
@@ -92,11 +88,8 @@ val Darius = Personnage(
     endurance = 8,
     armePrincipal = hacheDeGuerre,
     armure = armureetoffe,
-    inventaire = null,
-    avoirPotion = false,
-    boirePotion = false,
-    avoirBombe= false,
-    utiliserObjet = false
+    inventaire = mutableListOf(),
+
 )
 
 

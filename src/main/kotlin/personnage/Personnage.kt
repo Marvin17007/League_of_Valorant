@@ -3,8 +3,8 @@ package personnage
 import item.*
 
 
-class Personnage(
-    val nom: String,
+open class Personnage(
+    open val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
     var attaque: Int,
@@ -14,10 +14,7 @@ class Personnage(
     var armePrincipal: Arme?,
     var armure: Armure?,
     val inventaire: MutableList<Item> = mutableListOf(),
-    val avoirPotion: Boolean,
-    val boirePotion: Boolean,
-    val avoirBombe: Boolean,
-    var utiliserObjet: Boolean
+
 
     ) {
 

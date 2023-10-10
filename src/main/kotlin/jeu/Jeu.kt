@@ -3,6 +3,13 @@ package jeu
 import personnage.Personnage
 import epee
 import armureetoffe
+import lameDeDemacia
+import orbedIllision
+import personnage.Guerrier
+import personnage.Mage
+import personnage.Voleur
+import piedDeBiche
+import pompe
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -84,14 +91,11 @@ class Jeu(monstres: List<Personnage>) {
                 if (totalPoints > 40) {
                     println(" \u001B[1m Vous avez dépassé le total de 40 points. Réessayez. \u001B[0m ")
                 } else {
-                    Personnage(nom , pv, pv, attaque, defense, endurance, vitesse,
+                    hero =  Personnage(nom , pv, pv, attaque, defense, endurance, vitesse,
                         armePrincipal = epee ,
                         armure = armureetoffe,
                         inventaire = mutableListOf(),
-                        avoirPotion = false,
-                        boirePotion = false,
-                        avoirBombe= false,
-                        utiliserObjet = false).also { hero = it }
+                       ).also { hero = it }
                     this.joueur=hero
                     break
                 }
@@ -101,16 +105,31 @@ class Jeu(monstres: List<Personnage>) {
                 armePrincipal = epee ,
                 armure = armureetoffe,
                 inventaire = mutableListOf(),
-                avoirPotion = false,
-                boirePotion = false,
-                avoirBombe= false,
-                utiliserObjet = false)
+         )
             this.joueur=hero
         }
+
+        println("Choisissez la classe de votre personnage (Maître Gims/Larab/Moudjahed) :")
+        val classe = readln()
+
+        if (classe.lowercase()=="maître gims") {
+            hero = Mage(nom, 50, 50, 12, 8, 8, 12, orbedIllision, armureetoffe)
+        } else if (classe.lowercase()=="larab") {
+            hero = Voleur(nom, 50, 50, 12, 8, 8, 12, piedDeBiche, armureetoffe)
+        } else if (classe.lowercase()=="moudjahed") {
+            hero = Guerrier(nom, 50, 50, 12, 8, 8, 12, lameDeDemacia, armureetoffe, pompe)
+        } else {
+            // Gestion de l'erreur si l'utilisateur entre une classe invalide
+            println("Classe invalide. Choisissez parmi Maître Gims, Larab ou Moudjahed.")
+            return
+        }
+
         println()
         println(this.joueur)
 
     }
+
+
 
 
 

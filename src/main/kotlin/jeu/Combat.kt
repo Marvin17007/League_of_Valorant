@@ -24,12 +24,12 @@ class Combat(
             "P" -> {
                 println("Vous avez décidé de passer votre tour.")
             }
-            "U" -> {
+            "I" -> {
 
                 this.jeu.joueur.afficheInventaire()
 
 
-                println("Choisissez un objet en entrant son index (0 pour annuler) : ")
+                println("Choisissez un objet dans votre inventaire en entrant son index (0 pour annuler) : ")
                 val indexObjet = readln()
 
                 if (indexObjet != null && indexObjet >= 0.toString() && indexObjet < this.jeu.joueur.inventaire!!.size.toString()) {
